@@ -21,52 +21,52 @@ class NovaFileArtisanMeta
     }
 
 
-    public function all(): array
+    public function all($labels = []): array
     {
         return [
-            $this->fileName(),
-            $this->size(),
-            $this->mimeType(),
-            $this->format(),
-            $this->width(),
-            $this->height(),
-            $this->duration(),
+            $this->fileName($labels['name'] ?? 'File Name'),
+            $this->size($labels['size'] ?? 'Size'),
+            $this->mimeType($labels['mime_type'] ?? 'MIME Type'),
+            $this->format($labels['width'] ?? 'Width'),
+            $this->width($labels['height'] ?? 'Height'),
+            $this->height($labels['duration'] ?? 'Duration'),
+            $this->duration($labels['format'] ?? 'Format'),
         ];
     }
 
-    public function fileName(): Text
+    public function fileName($label = 'File Name'): Text
     {
-        return $this->meta('name', 'File Name');
+        return $this->meta('name', $label);
     }
 
-    public function size(): Text
+    public function size($label = 'Size'): Text
     {
-        return $this->meta('size', 'Size');
+        return $this->meta('size', $label);
     }
 
-    public function mimeType(): Text
+    public function mimeType($label = 'MIME Type'): Text
     {
-        return $this->meta('mime_type', 'MIME Type');
+        return $this->meta('mime_type', $label);
     }
 
-    public function width(): Text
+    public function width($label = 'Width'): Text
     {
-        return $this->meta('width', 'Width');
+        return $this->meta('width', $label);
     }
 
-    public function height(): Text
+    public function height($label = 'Height'): Text
     {
-        return $this->meta('height', 'Height');
+        return $this->meta('height', $label);
     }
 
-    public function duration(): Text
+    public function duration($label = 'Duration'): Text
     {
-        return $this->meta('duration', 'Duration');
+        return $this->meta('duration', $label);
     }
 
-    public function format(): Text
+    public function format($label = 'Format'): Text
     {
-        return $this->meta('format', 'Format');
+        return $this->meta('format', $label);
     }
 
     protected function meta(string $name, string $label): Text
